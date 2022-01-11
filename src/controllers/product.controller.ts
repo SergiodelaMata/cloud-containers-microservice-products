@@ -1,35 +1,45 @@
 import { Request } from "express";
 import { ProductEntity } from "../entities/product.entity";
+import { ProductModel } from "../models/product.model";
 
 export interface GetProducts {
   productData: ProductEntity | ProductEntity[];
   logged: boolean;
-  userId: string;
+  productId: string;
 }
 
 export interface GetProduct {
   productData: ProductEntity;
   logged: boolean;
-  userId: string;
+  productId: string;
 }
 export class ProductController {
   public static async getProducts(req: Request): Promise<GetProducts> {
-    return await {
-      productData: null,
+    return {
+      productData: await ProductModel.getProducts(),
       logged: false,
-      userId: null,
+      productId: null,
     };
   }
 
-  public static async saveProduct(req: Request): Promise<GetProduct> {
-    return await {
-      productData: null,
+  public static async getProduct(req: Request): Promise<GetProduct> {
+    return {
+      productData: await ProductModel.getProduct(req.params.productId),
       logged: false,
-      userId: null,
+      productId: null,
     };
+  }
+
+  public static async saveProduct(req: Request): Promise<boolean> {
+    return await ProductModel.saveProduct(req);
+  }
+
+  public static async updateProduct(req: Request): Promise<boolean> {
+    return await ProductModel.updateProduct(req);
   }
 
   public static async deleteProduct(req: Request): Promise<boolean> {
-    return null;
+    return await ProductModel.deleteProduct(req.params.productId);
   }
+
 }
