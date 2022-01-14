@@ -23,6 +23,7 @@ router.post("/product", async(_req: Request, res: Response) => {
   {
     res.status(200).send({status:"Product already saved"});
   }
+  
 });
 
 router.put("/product/update", async(_req: Request, res: Response) => {

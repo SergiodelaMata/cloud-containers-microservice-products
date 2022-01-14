@@ -5,20 +5,23 @@ import { ProductModel } from "../models/product.model";
 export interface GetProducts {
   productData: ProductEntity | ProductEntity[];
   logged: boolean;
-  productId: string;
+  userId: string;
+  rol : string;
 }
 
 export interface GetProduct {
   productData: ProductEntity;
   logged: boolean;
-  productId: string;
+  userId: string;
+  rol : string;
 }
 export class ProductController {
   public static async getProducts(req: Request): Promise<GetProducts> {
     return {
       productData: await ProductModel.getProducts(),
       logged: false,
-      productId: null,
+      userId: null,
+      rol: null,
     };
   }
 
@@ -26,7 +29,8 @@ export class ProductController {
     return {
       productData: await ProductModel.getProduct(req.params.productId),
       logged: false,
-      productId: null,
+      userId: null,
+      rol: null,
     };
   }
 
