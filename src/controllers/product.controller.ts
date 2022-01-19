@@ -33,10 +33,24 @@ export class ProductController {
       rol: null,
     };
   }
+  
+  public static async getProductByName(req: Request): Promise<GetProduct> {
+    return {
+      productData: await ProductModel.getProductByName(req.params.name),
+      logged: false,
+      userId: null,
+      rol: null,
+    };
+  }
 
   public static async saveProduct(req: Request): Promise<boolean> {
     return await ProductModel.saveProduct(req);
   }
+
+  public static async updateProductQuantity(req: Request): Promise<boolean> {
+    return await ProductModel.updateProductQuantity(req);
+  }
+
 
   public static async updateProduct(req: Request): Promise<boolean> {
     return await ProductModel.updateProduct(req);

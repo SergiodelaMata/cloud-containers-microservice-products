@@ -13,6 +13,12 @@ router.get("/products/:productId", async(_req: Request, res: Response) =>{
   res.send(productData);
 })
 
+router.get("/products/productByName/:name", async(_req: Request, res: Response) =>{
+  const productData: GetProduct = await ProductController.getProductByName(_req);
+  res.send(productData);
+})
+
+
 router.post("/product", async(_req: Request, res: Response) => {
   const verify = await ProductController.saveProduct(_req);
   if(verify)
@@ -23,7 +29,18 @@ router.post("/product", async(_req: Request, res: Response) => {
   {
     res.status(200).send({status:"Product already saved"});
   }
-  
+});
+
+router.post("/product", async(_req: Request, res: Response) => {
+  const verify = await ProductController.saveProduct(_req);
+  if(verify)
+  {
+    res.status(200).send({status:"Saved"});
+  }
+  else
+  {
+    res.status(200).send({status:"Product already saved"});
+  }
 });
 
 router.put("/product/update", async(_req: Request, res: Response) => {
@@ -38,6 +55,17 @@ router.put("/product/update", async(_req: Request, res: Response) => {
   }
 });
 
+router.put("/product/quantity/update", async(_req: Request, res: Response) => {
+  const verify = await ProductController.updateProductQuantity(_req);
+  if(verify)
+  {
+    res.status(200).send({status:"Updated"});
+  }
+  else
+  {
+    res.status(200).send({status:"Product quantity couldn't be updated"});
+  }
+});
 
 router.delete("/admin/product/:productId", async(_req: Request, res: Response) => {
   const verify = await ProductController.deleteProduct(_req);

@@ -70,17 +70,33 @@ export class ProductModel {
       product.description = req.body.description;
       product.price = req.body.price;
       product.quantity = req.body.quantity;
-      product.image = req.body.image;
       product.platform = req.body.platform;
       product.company = req.body.company;
       await ProductModel.repository.save(product);
       return true;
     } catch (error) {
-      console.log("Error al insertar el producto: " + error);
+      console.log("Error al actualizar el producto: " + error);
       return false;
     }
-    
   }
+
+  public static async updateProductQuantity(req: Request): Promise<boolean> {
+    console.log(req.body);
+    try {
+      ProductModel.repository = await database
+        .getConnection()
+        .getRepository(ProductEntity);
+      const product: ProductEntity = await ProductModel.getProduct(req.body.productId);
+      console.log(product);
+      product.quantity = req.body.quantity;
+      await ProductModel.repository.save(product);
+      return true;
+    } catch (error) {
+      console.log("Error al actualizar la cantidad del producto: " + error);
+      return false;
+    }
+  }
+
 
   public static async deleteProduct(productId: string): Promise<boolean> {
     const productData: ProductEntity = await this.getProduct(productId);
