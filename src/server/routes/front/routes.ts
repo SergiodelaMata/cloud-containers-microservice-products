@@ -5,22 +5,34 @@ const router: Router = express.Router();
 
 router.get("/products", async(_req: Request, res: Response) =>{
   const productData: GetProducts = await ProductController.getProducts(_req);
+  res.header("X-version","1");
+  res.header("X-sender","product");
+  res.header("X-destination","enrouting");
   res.send(productData);
 })
 
 router.get("/products/:productId", async(_req: Request, res: Response) =>{
   const productData: GetProduct = await ProductController.getProduct(_req);
+  res.header("X-version","1");
+  res.header("X-sender","product");
+  res.header("X-destination","enrouting");
   res.send(productData);
 })
 
 router.get("/products/productByName/:name", async(_req: Request, res: Response) =>{
   const productData: GetProduct = await ProductController.getProductByName(_req);
+  res.header("X-version","1");
+  res.header("X-sender","product");
+  res.header("X-destination","enrouting");
   res.send(productData);
 })
 
 
 router.post("/product", async(_req: Request, res: Response) => {
   const verify = await ProductController.saveProduct(_req);
+  res.header("X-version","1");
+  res.header("X-sender","product");
+  res.header("X-destination","enrouting");
   if(verify)
   {
     res.status(200).send({status:"Saved"});
@@ -33,7 +45,9 @@ router.post("/product", async(_req: Request, res: Response) => {
 
 router.put("/product/update", async(_req: Request, res: Response) => {
   const verify = await ProductController.updateProduct(_req);
-
+  res.header("X-version","1");
+  res.header("X-sender","product");
+  res.header("X-destination","enrouting");
   if(verify)
   {
     res.status(200).send({status:"Updated"});
@@ -46,6 +60,9 @@ router.put("/product/update", async(_req: Request, res: Response) => {
 
 router.put("/product/quantity/update", async(_req: Request, res: Response) => {
   const verify = await ProductController.updateProductQuantity(_req);
+  res.header("X-version","1");
+  res.header("X-sender","product");
+  res.header("X-destination","enrouting");
   if(verify)
   {
     res.status(200).send({status:"Updated"});
@@ -58,6 +75,9 @@ router.put("/product/quantity/update", async(_req: Request, res: Response) => {
 
 router.delete("/admin/product/:productId", async(_req: Request, res: Response) => {
   const verify = await ProductController.deleteProduct(_req);
+  res.header("X-version","1");
+  res.header("X-sender","product");
+  res.header("X-destination","enrouting");
   if(verify)
   {
     res.status(200).send({status:"Deleted"});
