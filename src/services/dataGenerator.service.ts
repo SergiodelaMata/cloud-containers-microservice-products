@@ -63,7 +63,7 @@ export class DataGenerator {
         await database
           .getConnection()
           .getRepository(ProductEntity)
-          .save([product1, product2]);
+          .save([product1, product2, product3, product4, product5]);
         console.log("Products created");
       } catch (error) {
         console.log("Error: " + error.message);
