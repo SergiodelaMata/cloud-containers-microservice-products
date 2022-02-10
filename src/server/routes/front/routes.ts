@@ -31,20 +31,9 @@ router.post("/product", async(_req: Request, res: Response) => {
   }
 });
 
-router.post("/product", async(_req: Request, res: Response) => {
-  const verify = await ProductController.saveProduct(_req);
-  if(verify)
-  {
-    res.status(200).send({status:"Saved"});
-  }
-  else
-  {
-    res.status(200).send({status:"Product already saved"});
-  }
-});
-
 router.put("/product/update", async(_req: Request, res: Response) => {
   const verify = await ProductController.updateProduct(_req);
+
   if(verify)
   {
     res.status(200).send({status:"Updated"});

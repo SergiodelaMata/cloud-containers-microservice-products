@@ -29,6 +29,7 @@ export class ProductModel {
   }
 
   public static async saveProduct(req: Request): Promise<boolean> {
+    console.log(req.body);
     const product: ProductEntity = new ProductEntity();
     product.productId = uuidv4(); //genera un identificador
     product.name = req.body.name;
@@ -36,9 +37,8 @@ export class ProductModel {
     product.price = req.body.price;
     product.quantity = req.body.quantity;
     product.image = req.body.image;
-    product.platform = req.body.platform;
-    product.company = req.body.company;
-        
+    product.platform = null;
+    product.company = null;        
     try {
       ProductModel.repository = await database
         .getConnection()
@@ -70,8 +70,8 @@ export class ProductModel {
       product.description = req.body.description;
       product.price = req.body.price;
       product.quantity = req.body.quantity;
-      product.platform = req.body.platform;
-      product.company = req.body.company;
+      product.platform = null;
+      product.company = null;
       await ProductModel.repository.save(product);
       return true;
     } catch (error) {

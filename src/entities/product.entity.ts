@@ -20,9 +20,9 @@ export class ProductEntity {
   @Column("longtext", {nullable: true})
   image: string;
 
-  @Column("varchar", {length: 100 })
+  @Column("varchar", {length: 100, nullable: true})
   platform: string;
 
-  @Column("varchar", {length: 100 })
+  @Column("varchar", {length: 100, nullable: true})
   company: string;
 }
