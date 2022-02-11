@@ -28,8 +28,7 @@ export class ProductModel {
     return await ProductModel.repository.findOne({ name: name });
   }
 
-  public static async saveProduct(req: Request): Promise<boolean> {
-    console.log(req.body);
+  public static async saveProduct(req: Request): Promise<ProductEntity> {
     const product: ProductEntity = new ProductEntity();
     product.productId = uuidv4(); //genera un identificador
     product.name = req.body.name;
@@ -47,16 +46,19 @@ export class ProductModel {
       if(!productAux)
       {
         await ProductModel.repository.save(product);
-        return true;
+
+        return product;
       }
       else
       {
         console.log("Ya existía un registro del producto.");
-        return false;
+        product.productId = "0";
+        return product;
       }
     } catch (error) {
       console.log("Error al insertar el producto: " + error);
-      return false;
+      product.productId = "-1";
+      return product;
     }
   }
 
