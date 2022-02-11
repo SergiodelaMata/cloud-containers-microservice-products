@@ -29,13 +29,13 @@ router.get("/products/productByName/:name", async(_req: Request, res: Response) 
 
 
 router.post("/product", async(_req: Request, res: Response) => {
-  const verify = await ProductController.saveProduct(_req);
+  const product: GetProduct = await ProductController.saveProduct(_req);
   res.header("X-version","1");
   res.header("X-sender","product");
   res.header("X-destination","enrouting");
-  if(verify)
+  if(product.productData.productId != "0" && product.productData.productId != "-1")
   {
-    res.status(200).send({status:"Saved"});
+    res.status(200).send({status:"Saved", productId: product.productData.productId});
   }
   else
   {
