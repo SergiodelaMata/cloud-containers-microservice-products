@@ -10,7 +10,7 @@ export class DataGenerator {
       .find();
     if (Products.length === 0) {
       const product1: ProductEntity = new ProductEntity();
-      product1.productId = uuidv4();
+      product1.productId = "7e59b613-9114-4481-bfec-d8ecd57016e7";
       product1.name = "God of War";
       product1.description = "God of War es la secuela de God of War III, así como una continuación de la cronología canónica de God of War. A diferencia de las entregas anteriores, este juego se centra en la mitología nórdica y sigue a un Kratos mayor y más experimentado y a su hijo Atreus en los años transcurridos desde el tercer juego. Es en este mundo duro e implacable donde debe luchar para sobrevivir... y enseñarle a su hijo a hacer lo mismo.";
       product1.price = 19.90;
@@ -20,7 +20,7 @@ export class DataGenerator {
       product1.company = "Sony";
       
       const product2: ProductEntity = new ProductEntity();
-      product2.productId = uuidv4();
+      product2.productId = "96630d52-49d5-4fae-bf52-5971159cfad6";
       product2.name = "Marvel's Spider-Man";
       product2.description = "Protagonizada por el superhéroe más icónico del mundo, Spider-Man presenta las habilidades acrobáticas, la improvisación y el lanzamiento de telarañas por las que es famoso el trepamuros, al tiempo que presenta elementos nunca antes vistos en un juego de Spider-Man. Desde atravesar con parkour y utilizar el entorno, hasta nuevos combates y escenarios de gran éxito, Spider-Man es diferente a cualquier otro que hayas jugado antes.";
       product2.price = 39.90;
@@ -30,7 +30,7 @@ export class DataGenerator {
       product2.company = "Sony";
 
       const product3: ProductEntity = new ProductEntity();
-      product3.productId = uuidv4();
+      product3.productId = "53045ab7-8006-408a-9a55-96e1ba14afc2";
       product3.name = "Pokémon Diamante Brillante";
       product3.description = "Vuelva a visitar la región de Sinnoh y la historia del juego Pokémon Versión Diamante. Experimente la nostálgica historia del juego Pokémon Versión Diamante en una aventura reimaginada, Pokémon Diamante Brillante, ¡ahora en el sistema Nintendo Switch! Las aventuras del juego Pokémon Diamante Brillante tendrán lugar en la familiar región de Sinnoh.";
       product3.price = 59.99;
@@ -40,7 +40,7 @@ export class DataGenerator {
       product3.company = "Nintendo";
 
       const product4: ProductEntity = new ProductEntity();
-      product4.productId = uuidv4();
+      product4.productId = "4d15f45d-f0b7-46c7-a20f-62b51bb3851b";
       product4.name = "Pokémon Perla Reluciente";
       product4.description = "Vuelva a visitar la región de Sinnoh y la historia del juego Pokémon Versión Perla. Experimente la nostálgica historia del juego Pokémon Versión Perla en una aventura reimaginada, Pokémon Perla Reluciente, ¡ahora en el sistema Nintendo Switch! Las aventuras del juego Pokémon Perla Reluciente tendrán lugar en la familiar región de Sinnoh.";
       product4.price = 59.99;
@@ -50,7 +50,7 @@ export class DataGenerator {
       product4.company = "Nintendo";
 
       const product5: ProductEntity = new ProductEntity();
-      product5.productId = uuidv4();
+      product5.productId = "9be672e3-1cb0-4c86-994c-0d2e0a9fa774";
       product5.name = "Halo Infinite";
       product5.description = "El Jefe Maestro regresa en Halo Infinite, el próximo capítulo de la legendaria franquicia. Cuando se pierde toda esperanza y el destino de la humanidad pende de un hilo, el Jefe Maestro está listo para enfrentarse al enemigo más despiadado que jamás haya enfrentado. Métete en la armadura del héroe más grande de la humanidad para vivir una aventura épica y explorar la enorme escala del anillo de Halo.";
       product5.price = 50.99;
