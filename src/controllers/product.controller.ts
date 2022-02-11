@@ -43,8 +43,13 @@ export class ProductController {
     };
   }
 
-  public static async saveProduct(req: Request): Promise<boolean> {
-    return await ProductModel.saveProduct(req);
+  public static async saveProduct(req: Request): Promise<GetProduct> {
+    return {
+      productData: await ProductModel.saveProduct(req),
+      logged: false,
+      userId: null,
+      rol: null,
+    };
   }
 
   public static async updateProductQuantity(req: Request): Promise<boolean> {
