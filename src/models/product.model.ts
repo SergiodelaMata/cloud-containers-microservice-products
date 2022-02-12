@@ -36,8 +36,15 @@ export class ProductModel {
     product.price = req.body.price;
     product.quantity = req.body.quantity;
     product.image = req.body.image;
-    product.platform = null;
-    product.company = null;        
+    if(req.body.platform)
+    {
+      product.platform = req.body.platform;
+
+    }
+    if(req.body.platform)
+    {
+      product.company = req.body.company;
+    }
     try {
       ProductModel.repository = await database
         .getConnection()
@@ -72,8 +79,15 @@ export class ProductModel {
       product.description = req.body.description;
       product.price = req.body.price;
       product.quantity = req.body.quantity;
-      product.platform = null;
-      product.company = null;
+      if(req.body.platform)
+      {
+        product.platform = req.body.platform;
+  
+      }
+      if(req.body.platform)
+      {
+        product.company = req.body.company;
+      }
       await ProductModel.repository.save(product);
       return true;
     } catch (error) {
