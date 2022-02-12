@@ -83,7 +83,6 @@ export class ProductModel {
   }
 
   public static async updateProductQuantity(req: Request): Promise<boolean> {
-    console.log(req.body);
     try {
       ProductModel.repository = await database
         .getConnection()
