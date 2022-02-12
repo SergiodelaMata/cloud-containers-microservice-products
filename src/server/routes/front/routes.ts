@@ -5,7 +5,7 @@ const router: Router = express.Router();
 
 router.get("/products", async(_req: Request, res: Response) =>{
   const productData: GetProducts = await ProductController.getProducts(_req);
-  res.header("X-version","1");
+  res.header("X-version","2");
   res.header("X-sender","product");
   res.header("X-destination","enrouting");
   res.send(productData);
@@ -13,7 +13,7 @@ router.get("/products", async(_req: Request, res: Response) =>{
 
 router.get("/products/:productId", async(_req: Request, res: Response) =>{
   const productData: GetProduct = await ProductController.getProduct(_req);
-  res.header("X-version","1");
+  res.header("X-version","2");
   res.header("X-sender","product");
   res.header("X-destination","enrouting");
   res.send(productData);
@@ -21,7 +21,7 @@ router.get("/products/:productId", async(_req: Request, res: Response) =>{
 
 router.get("/products/productByName/:name", async(_req: Request, res: Response) =>{
   const productData: GetProduct = await ProductController.getProductByName(_req);
-  res.header("X-version","1");
+  res.header("X-version","2");
   res.header("X-sender","product");
   res.header("X-destination","enrouting");
   res.send(productData);
@@ -30,7 +30,7 @@ router.get("/products/productByName/:name", async(_req: Request, res: Response) 
 
 router.post("/product", async(_req: Request, res: Response) => {
   const product: GetProduct = await ProductController.saveProduct(_req);
-  res.header("X-version","1");
+  res.header("X-version","2");
   res.header("X-sender","product");
   res.header("X-destination","enrouting");
   if(product.productData.productId != "0" && product.productData.productId != "-1")
@@ -45,7 +45,7 @@ router.post("/product", async(_req: Request, res: Response) => {
 
 router.put("/product/update", async(_req: Request, res: Response) => {
   const verify = await ProductController.updateProduct(_req);
-  res.header("X-version","1");
+  res.header("X-version","2");
   res.header("X-sender","product");
   res.header("X-destination","enrouting");
   if(verify)
@@ -59,8 +59,9 @@ router.put("/product/update", async(_req: Request, res: Response) => {
 });
 
 router.put("/product/quantity/update", async(_req: Request, res: Response) => {
+  console.log(_req.body);
   const verify = await ProductController.updateProductQuantity(_req);
-  res.header("X-version","1");
+  res.header("X-version","2");
   res.header("X-sender","product");
   res.header("X-destination","enrouting");
   if(verify)
@@ -75,7 +76,7 @@ router.put("/product/quantity/update", async(_req: Request, res: Response) => {
 
 router.delete("/admin/product/:productId", async(_req: Request, res: Response) => {
   const verify = await ProductController.deleteProduct(_req);
-  res.header("X-version","1");
+  res.header("X-version","2");
   res.header("X-sender","product");
   res.header("X-destination","enrouting");
   if(verify)
